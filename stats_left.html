@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+		<meta http-equiv="Cache-control" content="no-cache" />
+		
+		<style type="text/css">
+			@font-face
+			{
+				font-family: "Roadgeek2005SeriesD";
+				src: url("http://panic.com/fonts/Roadgeek 2005 Series D/Roadgeek 2005 Series D.otf");
+			}
+			
+			body, *
+			{
+			
+			}
+			body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td
+			{ 
+				margin: 0;
+				padding: 0;
+			}
+				
+			fieldset,img
+			{ 
+				border: 0;
+			}
+			img
+			{
+				height:30px;
+			}
+			
+				
+			/* Settin' up the page */
+			
+			html, body, #main
+			{
+				overflow: hidden; /* */
+			}
+			
+			body
+			{
+				color: white;
+				font-family: 'Roadgeek2005SeriesD', sans-serif;
+				font-size: 20px;
+				line-height: 24px;
+			}
+			body, html, #main
+			{
+				background: transparent !important;
+			}
+			
+			#sensorstatContainer
+			{
+				width: 378px;
+				height: 250px;
+				text-align: center;
+			}
+			#sensorstatContainer *
+			{
+				font-weight: normal;
+			}
+			.sensor_header
+			{
+				text-transform: uppercase;
+				font-weight: lighter;
+				font-size: 16px;
+				color: #7b7b7b;
+				line-height: 20px;
+			}
+			.sensor_type, .sensor_value, .sensor_unit, .sensor_location,
+			.sensor_type_header, .sensor_value_header, .sensor_unit_header, .sensor_location_header
+			{
+				text-align: left;
+				border-bottom-style: inset;
+				border-color: #454545;
+				border-width: thin;
+				padding: 8px 8px;
+			.sensor_value
+			{
+				text-align: center;
+			}
+			.sensor_unit
+			{
+				text-align: left;
+			}
+			.sensor_location
+			{
+				text-align: left;
+			}
+			
+			h1
+			{
+				font-size: 120px;
+				line-height: 120px;
+				margin-top: 15px;
+				margin-bottom: 28px;
+				color: white;
+				text-shadow:0px -2px 0px black;
+				text-transform: uppercase;
+			}
+			
+			h2
+			{
+				width: 180px;
+				margin: 0px auto;
+				padding-top: 20px;
+				font-size: 16px;
+				line-height: 18px;
+				color: #7e7e7e;
+				text-transform: uppercase;
+			}
+		</style>
+	
+		<script type="text/javascript">
+
+		function refresh()
+		{
+		    var req = new XMLHttpRequest();
+	   	 	console.log("Refreshing Count...");
+			
+	   	 	req.onreadystatechange=function() {
+		   	 	if (req.readyState==4 && req.status==200) {
+    				document.getElementById('howmany').innerText = req.responseText;
+				}
+			}
+		    req.open("GET", 'update.php', true);
+		    req.send(null);
+		}
+
+		function init()
+		{
+			// Change page background to black if the URL contains "?desktop", 
+			// for debugging while developing on your computer
+			if (document.location.href.indexOf('desktop') == -1) {
+				document.getElementById('sensorstatContainer').style.backgroundColor = 'black';
+			}	
+			refresh()
+			var int=self.setInterval(function(){refresh()},300000);
+		}
+
+		</script>
+	</head>
+	
+	<body onload="init()">
+		<div id="main">
+		    <div id="sensorstatContainer">
+		      <table id="stats" width=100%>
+		      	<tr class="sensor_header">
+		          <th class="sensor_type_header">Parameter</th>
+		          <th class="sensor_value_header">Value</th>
+		          <th class="sensor_unit_header">Unit</th>
+		          <th class="sensor_location_header">Location</th>
+		        </tr>
+		        <tr>
+		          <td class="sensor_type">Temperature</td>
+		          <td class="sensor_value">3.000</td>
+		          <td class="sensor_unit">°C</td>
+		          <td class="sensor_location">indoor</td>
+		        </tr>
+		        <tr>
+		          <td class="sensor_type">Temperature</td>
+		          <td class="sensor_value">30</td>
+		          <td class="sensor_unit">°C</td>
+		          <td class="sensor_location">outdoor</td>
+		        </tr>
+		        <tr>
+		          <td class="sensor_type">Humidity</td>
+		          <td class="sensor_value">30</td>
+		          <td class="sensor_unit">%</td>
+		          <td class="sensor_location">indoor</td>
+		        </tr>
+		        <tr>
+		          <td class="sensor_type">Humidity</td>
+		          <td class="sensor_value">30</td>
+		          <td class="sensor_unit">%</td>
+		          <td class="sensor_location">outdoor</td>
+		        </tr>
+		        <tr>
+		          <td class="sensor_type">CO2</td>
+		          <td class="sensor_value">30</td>
+		          <td class="sensor_unit">ppm</td>
+		          <td class="sensor_location">indoor</td>
+		        </tr>
+		        <tr>
+		          <td class="sensor_type">Noise</td>
+		          <td class="sensor_value">30</td>
+		          <td class="sensor_unit">db</td>
+		          <td class="sensor_location">indoor</td>
+		        </tr>
+		        <tr>
+		          <td class="sensor_type">Pressure</td>
+		          <td class="sensor_value">30</td>
+		          <td class="sensor_unit">mbar</td>
+		          <td class="sensor_location">indoor</td>
+		        </tr>
+		      </table>
+		    </div>	
+		</div><!-- main -->
+	</body>
+</html>
