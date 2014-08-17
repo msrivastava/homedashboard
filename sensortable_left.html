@@ -3,63 +3,20 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
 		<meta http-equiv="Cache-control" content="no-cache" />
-		
-		<style type="text/css">
-			@font-face
-			{
-				font-family: "Roadgeek2005SeriesD";
-				src: url("http://panic.com/fonts/Roadgeek 2005 Series D/Roadgeek 2005 Series D.otf");
-			}
-			
-			body, *
-			{
-			
-			}
-			body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td
-			{ 
-				margin: 0;
-				padding: 0;
-			}
-				
-			fieldset,img
-			{ 
-				border: 0;
-			}
-			img
-			{
-				height:30px;
-			}
-			
-				
-			/* Settin' up the page */
-			
-			html, body, #main
-			{
-				overflow: hidden; /* */
-			}
-			
-			body
-			{
-				color: white;
-				font-family: 'Roadgeek2005SeriesD', sans-serif;
-				font-size: 20px;
-				line-height: 24px;
-			}
-			body, html, #main
-			{
-				background: transparent !important;
-			}
-			
+		<link href="stylesheets/statusboard.css" rel="stylesheet" type="text/css"/>
+		<style type="text/css">			
 			#sensorstatContainer
 			{
 				width: 378px;
-				height: 250px;
+				height: 378px;
 				text-align: center;
 			}
+			
 			#sensorstatContainer *
 			{
 				font-weight: normal;
 			}
+			
 			.sensor_header
 			{
 				text-transform: uppercase;
@@ -68,48 +25,53 @@
 				color: #7b7b7b;
 				line-height: 20px;
 			}
-			.sensor_type, .sensor_value, .sensor_unit, .sensor_location, .sensor_type_header, .sensor_value_header, .sensor_unit_header, .sensor_location_header
+			
+			.sensor_type_header, .sensor_value_header, .sensor_unit_header, .sensor_comment_header
+			{
+				padding-top: 20px;
+				padding-bottom: 14px;
+				padding-left: 8px;
+				padding-right: 8px;
+				border-left-style: none;
+				border-right-style: none;
+				border-left-width: 0px;
+				border-right-width: 0px;
+			}
+					
+			.sensor_type, .sensor_value, .sensor_unit, .sensor_comment
+			{
+				padding-top: 10px;
+				padding-bottom: 8px;
+				padding-left: 8px;
+				padding-right: 8px;
+				border-top-style: ridge;
+				border-left-style: none;
+				border-right-style: none;
+				border-left-width: 0px;
+				border-right-width: 0px;
+				border-top-color: #454545;
+				border-top-width: thin;
+			}
+			
+			.sensor_type
 			{
 				text-align: left;
-				border-bottom-style: inset;
-				border-color: #454545;
-				border-width: thin;
-				padding: 8px 8px;
 			}
+			
 			.sensor_value
 			{
 				text-align: center;
 			}
+			
 			.sensor_unit
 			{
 				text-align: left;
 			}
-			.sensor_location
+			
+			.sensor_comment, .sensor_comment_header
 			{
 				text-align: left;
-			}
-			
-			h1
-			{
-				font-size: 120px;
-				line-height: 120px;
-				margin-top: 15px;
-				margin-bottom: 28px;
-				color: white;
-				text-shadow:0px -2px 0px black;
-				text-transform: uppercase;
-			}
-			
-			h2
-			{
-				width: 180px;
-				margin: 0px auto;
-				padding-top: 20px;
-				font-size: 16px;
-				line-height: 18px;
-				color: #7e7e7e;
-				text-transform: uppercase;
-			}
+			}		
 		</style>
 	
 		<script type="text/javascript">
@@ -146,53 +108,53 @@
 		<div id="main">
 		    <div id="sensorstatContainer">
 		      <table id="stats" width=100%>
-		      	<tr class="sensor_header">
-		          <th class="sensor_type_header">Parameter</th>
+		        <tr class="sensor_header">
+		          <th class="sensor_type_header">Sensor</th>
 		          <th class="sensor_value_header">Value</th>
 		          <th class="sensor_unit_header">Unit</th>
-		          <th class="sensor_location_header">Location</th>
+		          <th class="sensor_comment_header">Comment</th>
 		        </tr>
 		        <tr>
-		          <td class="sensor_type">Temperature</td>
+		          <td class="sensor_type">Temp</td>
 		          <td class="sensor_value">3.000</td>
 		          <td class="sensor_unit">°C</td>
-		          <td class="sensor_location">indoor</td>
+		          <td class="sensor_comment">indoor</td>
 		        </tr>
 		        <tr>
-		          <td class="sensor_type">Temperature</td>
+		          <td class="sensor_type"></td>
 		          <td class="sensor_value">30</td>
 		          <td class="sensor_unit">°C</td>
-		          <td class="sensor_location">outdoor</td>
+		          <td class="sensor_comment">outdoor</td>
 		        </tr>
 		        <tr>
 		          <td class="sensor_type">Humidity</td>
 		          <td class="sensor_value">30</td>
 		          <td class="sensor_unit">%</td>
-		          <td class="sensor_location">indoor</td>
+		          <td class="sensor_comment">indoor</td>
 		        </tr>
 		        <tr>
-		          <td class="sensor_type">Humidity</td>
+		          <td class="sensor_type"></td>
 		          <td class="sensor_value">30</td>
 		          <td class="sensor_unit">%</td>
-		          <td class="sensor_location">outdoor</td>
+		          <td class="sensor_comment">outdoor</td>
 		        </tr>
 		        <tr>
 		          <td class="sensor_type">CO2</td>
 		          <td class="sensor_value">30</td>
 		          <td class="sensor_unit">ppm</td>
-		          <td class="sensor_location">indoor</td>
+		          <td class="sensor_comment">indoor</td>
 		        </tr>
 		        <tr>
 		          <td class="sensor_type">Noise</td>
 		          <td class="sensor_value">30</td>
 		          <td class="sensor_unit">db</td>
-		          <td class="sensor_location">indoor</td>
+		          <td class="sensor_comment">indoor</td>
 		        </tr>
 		        <tr>
 		          <td class="sensor_type">Pressure</td>
 		          <td class="sensor_value">30</td>
 		          <td class="sensor_unit">mbar</td>
-		          <td class="sensor_location">indoor</td>
+		          <td class="sensor_comment">indoor</td>
 		        </tr>
 		      </table>
 		    </div>	
